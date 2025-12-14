@@ -1,0 +1,20 @@
+# build output (Zephyr/west)
+build*/
+**/build*/
+out*/
+**/out*/
+
+# python venv / caches
+.venv/
+__pycache__/
+*.pyc
+.cache/
+.pytest_cache/
+
+# west workspace metadata (don’t commit)
+.west/
+
+# editor/OS cruft
+.DS_Store
+.vscode/
+.idea/

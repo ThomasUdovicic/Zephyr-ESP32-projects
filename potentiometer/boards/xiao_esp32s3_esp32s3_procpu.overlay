@@ -13,7 +13,7 @@
 
         led1: led_1 {
             /* External LED connected to expansion board A0 */
-            gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
             label = "LED2";
         };
     };
@@ -29,9 +29,27 @@
         };
     };
 
+    zephyr,user {
+        io-channels = <&adc1 0>;
+    }
+
     aliases {
         led0 = &led0;
         led1 = &led1;
         sw0 = &button0;
     };
+};
+
+&adc1 {
+    status = "okay";
+
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1_6";
+        zephyr,ref = "ADC_REF_INTERNAL";
+        zephyr,resolution = <8>;
+    }
 };
